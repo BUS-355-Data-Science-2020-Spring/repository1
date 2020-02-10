@@ -1,6 +1,8 @@
 # Demo file
 # 2020 Spring - BUS 355 Intro to Data Science
 
+# Any line that begins with a '#' is a comment line and is NOT run by R
+
 5 + 7
 
 x <- 5 + 7
