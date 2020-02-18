@@ -1,0 +1,93 @@
+---
+title: "SQL Practice"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(DBI)
+library(RSQLite)
+
+```
+
+## # This file is a practice file for SQL in the BUS 355 Intro to Data Science Course, Spring 2020
+
+```{r connection}
+
+drv <- dbDriver("SQLite")
+con <- dbConnect(drv, dbname="chinook.db")
+
+```
+
+## Data Model
+![Data Model](https://i.imgur.com/QRgDtNv.jpg)
+
+## Show all tables
+```{r showAllTables, echo=FALSE}
+dbListTables(con)
+
+```
+
+# Question 1: Display all the information from the Track table sorted by length
+```{r Q1}
+# Q1 <- dbGetQuery(con,...)
+```
+
+# Question 2: Display the Customer ID and the total amount the customer has spent for customers that spent over $40
+```{r Q2}
+
+```
+
+# Question 3: Display the Artist ID for Queen
+```{r Q3}
+
+```
+
+# Question 4: Display the 10 shortest songs
+```{r Q4}
+
+```
+
+# Question 5: Display the track name and album title of all tracks that cost $1.99
+```{r Q5}
+
+```
+
+# Question 6: Display the artist name, album title, length of the album in seconds, with only albums longer than 1000 seconds, ordered by length in descending order
+```{r Q6}
+
+```
+
+# Question 7: Display the customer last name and first name, the track name, the unit price, and the quantity for all track purchases
+```{r Q7}
+
+```
+
+# Question 8: Display all customer information for all customers who had 2 or more orders for over $10
+```{r Q8}
+
+```
+
+
+# PART 2: INTERPRETING THE SQL QUERIES
+
+
+
+There are a total of five queries. Each group has to try to interpret them. The fastest group with the correct answer will get a point. Do not read out the query directly for the interpretation. Tell exactly what information will be shown from the query.
+
+
+print(dbGetQuery(con, "select max(Milliseconds), avg(Milliseconds)  from Track;"))
+
+print(dbGetQuery(con, "select distinct AlbumID from Track"))
+
+print(dbGetQuery(con, "select trackid ,name from Track where Bytes < 1000000"))
+
+print(dbGetQuery(con, "select name, title from Album join Artist using(ArtistId)"))
+
+print(dbGetQuery(con, "select track.name,album.title from track join album using(albumid) where title = 'Supernatural'"))
+
+
+
+
+
+
